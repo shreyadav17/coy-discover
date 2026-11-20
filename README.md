@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Coy Discover
+
+A mobile-first dating discovery application built as part of the Coy SDE Intern Assignment. Discover profiles, like or pass on them, and connect through mutual likes.
+
+## Features
+
+- Browse 30 mock user profiles one at a time.
+- Swipe right to like and left to pass on mobile.
+- Like and Pass buttons for desktop users.
+- Mutual matching when both users like each other.
+- "It's a Match!" popup on successful matches.
+- Dedicated Matches view.
+- JSON-based persistence of swipes and matches.
+- Previously swiped profiles do not reappear after refresh.
+- Feed API hides whether a profile has already liked the current user.
+
+## Tech Stack
+
+- Next.js 16
+- React
+- TypeScript
+- CSS
+- Next.js Route Handlers
+- JSON file-based storage
+
+## Project Structure
+
+```text
+app/
+├── api/
+│   ├── feed/route.ts
+│   ├── matches/route.ts
+│   └── swipe/route.ts
+├── data/profiles.ts
+├── globals.css
+├── layout.tsx
+└── page.tsx
+data/swipes.json
+lib/store.ts
+public/profiles/
+package.json
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+cd YOUR_REPOSITORY_NAME
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Endpoints
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/feed` | Returns profiles not yet swiped |
+| POST | `/api/swipe` | Saves a like or pass and checks for a match |
+| GET | `/api/matches` | Returns mutual matches |
 
-## Learn More
+### Swipe API Example
 
-To learn more about Next.js, take a look at the following resources:
+Request:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```json
+{
+  "profileId": 1,
+  "action": "like"
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Response:
 
-## Deploy on Vercel
+```json
+{
+  "success": true,
+  "isMatch": true
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Data Storage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The application uses `data/swipes.json` to persist swipe actions and matches. It starts with empty arrays:
+
+```json
+{
+  "swipes": [],
+  "matches": []
+}
+```
+
+## Production Build
+
+```bash
+npm run build
+```
+
+## Future Improvements
+
+- User authentication
+- Database integration
+- Real-time notifications
+- Profile filtering and discovery preferences
+- Cloud deployment
+
+---
+
+Built as part of the Coy SDE Intern Assignment.

@@ -1,26 +1,365 @@
-@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0c0c0f;
+  color: #f5f2ee;
+  font-family: 'DM Sans', sans-serif;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  max-width: 480px;
+  margin: auto;
+  padding: 28px 22px;
+  background: #0c0c0f;
+}
+
+.topbar {
+  padding: 10px 0 30px;
+}
+
+.logo {
+  font-size: 38px;
+  letter-spacing: -2px;
+  font-weight: 700;
+}
+
+.logo span {
+  color: #e98c91;
+}
+
+.tagline {
+  color: #88858c;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.tabs {
+  display: flex;
+  background: #19191e;
+  border-radius: 14px;
+  padding: 5px;
+  margin-bottom: 28px;
+}
+
+.tabs button {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  border-radius: 11px;
+  background: transparent;
+  color: #929098;
+  font-size: 14px;
+}
+
+.tabs button.active {
+  background: #29282f;
+  color: #fff;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #e98c91;
+  margin-bottom: 8px;
+}
+
+.section-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+}
+
+.badge {
+  font-size: 12px;
+  background: #242228;
+  color: #e6a1a5;
+  padding: 9px 13px;
+  border-radius: 30px;
+}
+
+.profile-card {
+  background: #19191e;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid #29282f;
+}
+.profile-photo {
+  width: 100%;
+  height: 440px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #19191e;
+  position: relative;
+}
+
+.photo-gradient {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent 65%);
+}
+
+.photo-details h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: white;
+}
+
+.photo-details p {
+  color: #eee;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.interests span {
+  background: #29252d;
+  color: #e8a4aa;
+  border: 1px solid #44323b;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+.photo-placeholder {
+  height: 360px;
+  background: linear-gradient(145deg, #30252a, #25252d, #3a2d30);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #c8a4a7;
+}
+
+.photo-placeholder span {
+  font-size: 65px;
+}
+
+.photo-placeholder p {
+  font-size: 12px;
+  color: #a49ba0;
+}
+
+.profile-info {
+  padding: 22px;
+}
+
+.profile-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.profile-info p {
+  color: #939098;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.actions button {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  font-size: 26px;
+  background: #1c1b21;
+}
+
+.pass {
+  color: #e5a1a5;
+  border: 1px solid #493339;
+}
+
+.like {
+  color: #fff;
+  background: #d77983 !important;
+  border: none;
+}
+
+.hint {
+  text-align: center;
+  color: #77747c;
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+.home {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.home h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.home p {
+  color: #8d8992;
+  font-size: 13px;
+}
+
+.footer {
+  margin-top: 50px;
+  text-align: center;
+  color: #55535c;
+  font-size: 12px;
+}
+
+.footer span {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.footer p {
+  margin-top: 5px;
+}
+
+@media (max-width: 380px) {
+  .photo-placeholder {
+    height: 300px;
+  }
+
+  .section-heading h2 {
+    font-size: 29px;
+  }
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.match-card {
+  background: #19191e;
+  border: 1px solid #29282f;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.match-photo {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.match-info {
+  padding: 13px;
+}
+
+.match-info h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.match-info p {
+  color: #939098;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.match-info span {
+  color: #e98c91;
+  font-size: 11px;
+}
+
+.match-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+}
+
+.match-popup {
+  width: 100%;
+  max-width: 360px;
+  background: #211d25;
+  border: 1px solid #49333d;
+  border-radius: 24px;
+  padding: 35px 22px;
+  text-align: center;
+}
+
+.match-heart {
+  display: block;
+  color: #e98c91;
+  font-size: 65px;
+  margin-bottom: 15px;
+}
+
+.match-popup h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  margin: 12px 0;
+}
+
+.match-popup > p:not(.eyebrow) {
+  color: #aaa4ae;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.match-popup button,
+.empty-state button {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding: 13px;
+  background: #d77983;
+  color: white;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.match-popup button.view-matches {
+  background: #38313d;
+  color: #f5f2ee;
+}
+
+@media (max-width: 380px) {
+  .match-photo {
+    height: 145px;
+  }
 }
