@@ -53,8 +53,8 @@ package.json
 Clone the repository:
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd YOUR_REPOSITORY_NAME
+git clone https://github.com/shreyadav17/coy-discover.git
+cd coy-discover
 ```
 
 Install dependencies:
